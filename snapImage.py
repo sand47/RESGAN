@@ -8,13 +8,12 @@ class snapImage:
         #pass
         self.i = 0 
         
-
     def cropImage(self):
 
         # take screenshot
         image = pyautogui.screenshot()
         image = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
-
+        cv2.imwrite("screenshot/img"+str(self.i)+".png",map_img)
         # crop location from these below coordinates
         r0 = 286;r1 = 814;r2 = 221;r3 = 223
         map_img = image[r1:r1+r3, r0:r0+r2]
