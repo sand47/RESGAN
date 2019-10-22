@@ -2,11 +2,13 @@ import time
 import cv2
 import pyautogui
 import numpy as np
+from os import walk
 
 class snapImage:
     def __init__(self):
         #pass
         self.i = 0 
+        self.test = 0 
         
     def cropImage(self):
 
@@ -45,7 +47,15 @@ class snapImage:
 
 
         return coord
-
+    def test(self,path):
+        #path = "screenshot/"
+        for (dirpath, dirnames, filenames) in walk(mypath):
+            for f in filenames:
+                image = cv2.imread(path+f)
+                r0 = 286;r1 = 814;r2 = 221;r3 = 223
+                crop = pre_image[r1:r1+r3, r0:r0+r2]
+                cv2.imwrite("test/crop_test"+str(p)+".png",crop)
+                self.test +=1
 
     def display(self,image):
         cv2.imshow("Image", image)
