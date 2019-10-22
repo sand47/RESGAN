@@ -1,15 +1,15 @@
 from snapImage import *
-#import location
 import pyautogui
 
 def main():
     
+    # while condition
     # take screenshot and crop the map
-    sys = snapImage()
-    img = sys.cropImage()
+    env = snapImage()
+    map_img = env.cropImage()
 
     # finding location of activity spots
-    coordinate = sys.location(img)
+    coordinate = env.location(map_img)
     print(coordinate)
     # clicking on the coordinates location
     #pyautogui.click(x=coordinate[0], y=coordinate[1])
