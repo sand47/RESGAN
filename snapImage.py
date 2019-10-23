@@ -1,54 +1,85 @@
-import time
 import cv2
 import pyautogui
 import numpy as np
+import random
 
 class snapImage:
-    def __init__(self):
-        #pass
-        self.i = 0 
-        
 
+    def __init__(self):
+        self.id = 0
+        self.keyCoordinate =[]
+    
     def cropImage(self):
 
         # take screenshot
         image = pyautogui.screenshot()
         image = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
-
-        # crop location from these below coordinates
+        cv2.imwrite("screenshot/screenshot"+str(self.id)+".png",image)
+        
+        # crop image using the below coordinates
         r0 = 286;r1 = 814;r2 = 221;r3 = 223
         map_img = image[r1:r1+r3, r0:r0+r2]
-
+       
         #save map_imgs if needed 
-        cv2.imwrite("crop/crop_test"+str(self.i)+".png",map_img)
-        time.sleep(1)
-        self.i+=1
+        cv2.imwrite("crop/crop_test"+str(self.id)+".png",map_img)
+        self.id+=1
         
         return map_img
 
-    def location(self,image):
+    def find_contour(self,mask):
+        '''
+        Appends the first coordinate of a contours to key Coordinate list. A contours has a list of coordinates which contours the object
+        Thus we can pick the first coordinate.
+
+        '''
+        ret,thresh = cv2.threshold(mask, 40, 255, 0)
+        contours,hierarchy = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
        
-        # find red,blue,green locatons
+        for i in range(len(contours)):
+            cntx = contours[i][0]
+            pt = (cntx[0][0],cntx[0][1])
+            self.keyCoordinate.append(pt)
         
-        lower_red = np.array([0,0,220])  # BGR-code of your lowest red
-        upper_red = np.array([10,10,255])   # BGR-code of your highest red
-        mask = cv2.inRange(image, lower_red, upper_red) 
-        #mask = cv2.inRange(hsv, (36, 25, 25), (70, 255,255)) for Green 
-        #blue_lower=np.array([150,150,0],np.uint8)
-        #blue_upper=np.array([180,255,255],np.uint8)
-        #mask = cv2.inRange(image, blue_lower, blue_upper) 
+ 
+    def location(self,img):
+        '''
+        Finds the coordinate of active locations of  AI vs AI mode players using the color
+        of the player which is predefined.We first mask the map using given color and find the
+        coordinates and append it to the keyCoordinate list and return a random index.
 
-        #get all non zero values
-        coord=cv2.findNonZero(mask)
-        #print(coord)
+        '''
 
-        # add condition to find important coordinates
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+
+        # human player mask
+        #pink_lower = np.array([142,192,200])
+        #pink_upper = np.array([162,212,280])
+        #pink_mask = cv2.inRange(img, pink_lower,pink_upper)
+        #self.find_contour(pink_mask)
+
+        # AI player 1 
+        yellow_lower  = np.array([20,188,206])
+        yellow_upper = np.array([40,208,286])
+        yellow_mask = cv2.inRange(img, yellow_lower,yellow_upper)
+        self.find_contour(yellow_mask)
+
+        # AI player 2 
+        red_lower = np.array([-10,235,164])
+        red_upper = np.array([10,255,244])
+        red_mask = cv2.inRange(img, red_lower,red_upper)
+        self.find_contour(red_mask)
+               
+        return random.choice(self.keyCoordinate)
+
+    def display(self,image):
+        cv2.imshow("Image", image)
+        cv2.waitKey(0) # waits until a key is pressed
+        cv2.destroyAllWindows() # destroys the window showing image
 
 
-        return coord
-
-    def test_center_coordinate(self):
-
+       
+    def test_center_coordinate(self,image):
+       
         ## Read
         imgs = cv2.imread("test.png")
         cv2.imshow("Image", imgs)
@@ -87,9 +118,5 @@ class snapImage:
     
         cv2.destroyAllWindows() # destroys the window showing image
 
-
-    def display(self,image):
-        cv2.imshow("Image", image)
-        cv2.waitKey(0) # waits until a key is pressed
-        cv2.destroyAllWindows() # destroys the window showing image
-
+        return coord
+     
