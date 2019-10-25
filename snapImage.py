@@ -88,7 +88,7 @@ class snapImage:
         # Press okay
         pyautogui.press('o')
         
-    def game2cantoon(self):
+    def dataCollection(self):
 
         time.sleep(1)
         # pass the game in SD
