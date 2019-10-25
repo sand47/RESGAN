@@ -21,7 +21,7 @@ def main():
         pyautogui.click(x=coordinate[0]+286,y=coordinate[1]+814)
 
         # Take images both SD and cantoon
-        sys.game2cantoon()
+        sys.dataCollection()
        
 
 if __name__ == "__main__":
