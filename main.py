@@ -1,22 +1,28 @@
 from snapImage import *
-#import location
 import pyautogui
+import time
 
 def main():
     
-    # take screenshot and crop the map
     sys = snapImage()
-    #img = sys.cropImage()
-    
-    coordinate = sys.test_center_coordinate()
-    
-    # finding location of activity spots
-    #coordinate = sys.location(img)
-    print(coordinate)
-    
-    # clicking on the coordinates location
-    #pyautogui.click(x=coordinate[0], y=coordinate[1])
-    
+    # time to switch over to game console
+    time.sleep(5)
+    while True:
+
+        # take screenshot and crop the map
+        img = sys.cropImage()
+        
+        # finding location of key spots
+        coordinate = sys.location(img)
+      
+        # clicking on the coordinates location
+        # (286,814) are added so that we map to original coordinate
+        # from the cropped image 
+        pyautogui.click(x=coordinate[0]+286,y=coordinate[1]+814)
+
+        # Take images both SD and cantoon
+        sys.game2cantoon()
+       
 
 if __name__ == "__main__":
     main()
