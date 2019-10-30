@@ -121,11 +121,9 @@ class snapImage:
         # pass the game in SD
         pyautogui.click(x=1345 ,y=1000)
         self.keyPress()
-        time.sleep(1)
-        
+               
         self.keyPress() #To change to SD
-        time.sleep(1)
-        
+                
         # take game in SD domain
         imageSD = pyautogui.screenshot()
         image = cv2.cvtColor(np.array(imageSD), cv2.COLOR_RGB2BGR)
