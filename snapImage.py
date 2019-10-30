@@ -111,6 +111,8 @@ class snapImage:
     
     def keyPress(self):
         pyautogui.press('f5')
+        pyautogui.press('f5')
+        
         
         
     def dataCollection(self):
@@ -118,7 +120,7 @@ class snapImage:
         #time.sleep(1)
         # pass the game in SD
         pyautogui.click(x=1345 ,y=1000)
-        
+        self.keyPress()
         # take game in SD domain
         imageSD = pyautogui.screenshot()
         image = cv2.cvtColor(np.array(imageSD), cv2.COLOR_RGB2BGR)
@@ -128,7 +130,7 @@ class snapImage:
         time.sleep(1)
 
         # Press key to change to cantoon 
-        self.keyPress()
+        pyautogui.press('f5')
         
         time.sleep(1)
         # take image of cantoon
@@ -139,9 +141,9 @@ class snapImage:
         cv2.imwrite("cantoon/"+str(self.idHD)+".png",Cantoon_image)
         self.idHD +=1
         time.sleep(1)
-
+        pyautogui.press('f5')
         # get back to SD    
-        self.keyPress()
+       # self.keyPress()
         time.sleep(1)    
 
         # play the game in SD
