@@ -117,7 +117,7 @@ class snapImage:
         
     def dataCollection(self):
 
-        #time.sleep(1)
+        time.sleep(1)
         # pass the game in SD
         pyautogui.click(x=1345 ,y=1000)
         self.keyPress()
