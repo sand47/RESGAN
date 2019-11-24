@@ -131,7 +131,7 @@ class snapImage:
         image = cv2.cvtColor(np.array(imageSD), cv2.COLOR_RGB2BGR)
         r0 = 320;r1 = 5;r2 = 1200;r3 = 759
         SD_image = image[r1:r1+r3, r0:r0+r2]
-        cv2.imwrite("SD/"+str(self.idHD)+".png",SD_image)
+        cv2.imwrite("SD/set1"+str(self.idHD)+".png",SD_image)
         time.sleep(1)
 
         # Press key to change to cantoon 
@@ -143,7 +143,7 @@ class snapImage:
         imageCAN = cv2.cvtColor(np.array(imageCAN), cv2.COLOR_RGB2BGR)
         r0 = 320;r1 = 5;r2 = 1200;r3 = 759
         Cantoon_image = imageCAN[r1:r1+r3, r0:r0+r2]
-        cv2.imwrite("cantoon/"+str(self.idHD)+".png",Cantoon_image)
+        cv2.imwrite("cantoon/set1"+str(self.idHD)+".png",Cantoon_image)
         self.idHD +=1
         time.sleep(1)
         pyautogui.press('f5')
