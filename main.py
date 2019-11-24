@@ -1,10 +1,14 @@
 from snapImage import *
 import pyautogui
 import time
+import os
 
 def main():
     
     sys = snapImage()
+    os.mkdir('D:\\starcraft-research-final-final\\SD\\set1')
+    os.mkdir('D:\\starcraft-research-final-final\\cantoon\\set1')
+
     # time to switch over to game console
     time.sleep(3)
     while True:
