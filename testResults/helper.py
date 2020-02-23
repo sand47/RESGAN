@@ -50,10 +50,10 @@ def SaveToExcel(filename,l1):
 
 def historPlot(train,test):
     fig, ax = plt.subplots(1,1)
-    bins = numpy.linspace(0,50, 10)
+    bins = np.linspace(0,50, 10)
 
     plt.hist(test, bins, color='g',alpha=.6, label='Test L1 loss')
-    plt.hist(trainL1, bins,color='b', alpha=0.4, label='Train L1 loss')
+    plt.hist(train, bins,color='b', alpha=0.4, label='Train L1 loss')
     plt.legend(loc='upper right')
     plt.title("Histogram plot of train & test loss")
     #pyplot.show()
