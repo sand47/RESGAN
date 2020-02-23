@@ -21,7 +21,7 @@ def main():
     historPlot(train_loss,test_loss)
 
     # video to image -> pass it to trained model for inference
-    video()
+    #video()
     
     
 if __name__=="__main__":
