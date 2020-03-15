@@ -100,7 +100,7 @@ def trainloss():
            line = fp.readline()
 
 
-        epoch_count = range(1, len(G_L1) + 1)
+       epoch_count = range(1, len(G_L1) + 1)
 
     fig, ax = plt.subplots(1,1) 
     ax.plot(epoch_count,G_L1,'C1',label='G_L1')
