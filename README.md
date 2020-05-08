@@ -10,7 +10,7 @@ Kindly refer, [original Pix2Pix page](https://github.com/junyanz/pytorch-CycleGA
 
 ### Data Preprocessing: 
 
-The snapImage folder contains the automated python script to capture images while playing the game video from the StarCraft and the images are saved using unqiue file name each time it is. Kindly save theses images in different set folder each time is it runned over the reply video. Once, we have these images collected over several video stored in the different set folder we can combine together by creating a two new subdirectories named cartoon and SD folder inside the combineData folder. These subdirectories should each have their own subdirectories train, val, test, etc. In ./combineImage/cartoon/train, put training images. In ./combineImage/SD/train, put the corresponding images. Repeat same for other data splits (val, test, etc).
+The snapImage folder contains the automated python script to capture images while playing the game video from the StarCraft and the images are saved using unqiue file name each time it is. Kindly save these images in different set folder each time is it run over the reply video. Once, we have these images collected over several videos stored in the different set folder we can combine the SD and corresponding cartoon image together by creating two new subdirectories named cartoon and SD folder inside the combineData folder. These subdirectories should each have their own subdirectories train, val, test, etc. In ./combineImage/cartoon/train, put training images. In ./combineImage/SD/train, put the corresponding images. Repeat same for other data splits (val, test, etc).
 
 Corresponding images in a pair {A,B} must be the same size and have the same filename, e.g., ./combineImage/cartoon/train/1.jpg is considered to correspond to /combineImage/SD/train/1.jpg.
 
@@ -24,11 +24,11 @@ Create a new folder inside the dataset folder named starcraft and paste all the 
 
 To train the model, 
 ```
-python train.py --dataroot ./ ataset/starcraft --name experimentname --model pix2pix --direction AtoB --no_flip --checkpoints_dir trained_model --netG --beta1 0.8 t_9blocks --ngf 256 --no_dropout 
+python train.py --dataroot ./ dataset/starcraft --name experimentname --model pix2pix --direction AtoB --no_flip --checkpoints_dir trained_model --netG resnet_9blocks --ngf 256 --no_dropout --init_type kaiming --beta1 0.8
 ```
 To test the model, 
 ```
-python test.py --dataroot ./dataset/starcraft/ --model pix2pix --name experimentname.8  --ngf 256 --direction AtoB  --netG resnet_9blocks --beta1 0.8 --checkpoints_dir trained_model --no_dropout 
+python test.py --dataroot ./dataset/starcraft/ --model pix2pix --name experimentname.8  --ngf 256 --direction AtoB  --netG resnet_9blocks --beta1 0.8 --checkpoints_dir trained_model --init_type kaiming --no_dropout 
 ```
 
 # Experiment analysis 
