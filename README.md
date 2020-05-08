@@ -1,6 +1,6 @@
 # Modified Pix2Pix architecture for StarCraft video remastering in PyTorch
 
-We would like to sincerly thank the authors of Pix2Pix for using their open-sourced source code in PyTorch. 
+We would like to sincerely thank the authors of Pix2Pix for using their open-sourced source code in PyTorch. 
 
 The Pix2Pix code was written by [Jun-Yan Zhu](https://github.com/junyanz) and [Taesung Park](https://github.com/taesung), and supported by [Tongzhou Wang](https://ssnl.github.io/).
 
