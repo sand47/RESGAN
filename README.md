@@ -31,6 +31,26 @@ To test the model,
 python test.py --dataroot ./dataset/starcraft/ --model pix2pix --name experimentname.8  --ngf 256 --direction AtoB  --netG resnet_9blocks --beta1 0.8 --checkpoints_dir trained_model --no_dropout 
 ```
 
+# Experiment analysis 
+
+Once we have the train set and test set results, put the log file and the both images folder inside the testResults folder. Rename the test set result folder as testimage and train set result folder is trainimage. Run the following code, we generates the training loss curve, avgerage L1 loss and excel file containing the L1 loss value and its recorreponding image name. 
+```
+python testResults.py 
+```
+
+## Testing on Youtube video 
+To convert Youtube video to images change the video file name inside the code and run  
+
+```
+python video2frame.py
+```
+To convert the generated fake cartoon image back to video, put the fake images inside a folder name testResult and run,
+
+```
+python img2video.py 
+```
+
+
 `NOTE`: The research is still under work and the end to end model will be released soon. 
 ## Reference citation: 
 ```
