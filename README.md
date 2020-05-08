@@ -4,7 +4,7 @@ We would like to sincerly thank the authors of Pix2Pix for using their open-sour
 
 The Pix2Pix code was written by [Jun-Yan Zhu](https://github.com/junyanz) and [Taesung Park](https://github.com/taesung), and supported by [Tongzhou Wang](https://ssnl.github.io/).
 
-Kindly refer, [original Pix2Pix page] (https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix) for installtion of package. 
+Kindly refer, [original Pix2Pix page](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix) for installing packages. 
 
 ## Our Contribution 
 
