@@ -33,7 +33,7 @@ python test.py --dataroot ./dataset/starcraft/ --model pix2pix --name experiment
 
 # Experiment analysis 
 
-Once we have the train set and test set results, put the log file and the both images folder inside the testResults folder. Rename the test set result folder as testimage and train set result folder is trainimage. Run the following code, we generates the training loss curve, avgerage L1 loss and excel file containing the L1 loss value and its recorreponding image name. 
+Once we have the train set and test set results, put the log file and the both images folder inside the testResults folder. Rename the test set result folder as testimage and train set result folder is trainimage. Run the following code, we generates the training loss curve, average L1 loss and excel file containing the L1 loss value and its recorreponding image name. 
 ```
 python testResults.py 
 ```
